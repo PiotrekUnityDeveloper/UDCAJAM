@@ -26,7 +26,15 @@ public class SnakeStuff : MonoBehaviour
         block.SetActive(false);
 
         //coroutine trigger here
+        StartCoroutine(ShutdownDelay());
     }
+
+    public IEnumerator ShutdownDelay()
+    {
+        yield return new WaitForSecondsRealtime(14f);
+        SceneManager.LoadSceneAsync("SampleScene");
+    }
+
 
     GameObject food;
 
