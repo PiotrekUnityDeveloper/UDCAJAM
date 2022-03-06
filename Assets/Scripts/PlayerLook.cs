@@ -107,10 +107,42 @@ public class PlayerLook : MonoBehaviour
                         hit.transform.gameObject.GetComponent<Door>().OpenDoor(this.gameObject.transform);
                     }
                 }
+                else if (hit.collider.tag == "lockeddoor1" && hit.transform.gameObject.GetComponent<Door>() != null)
+                {
+
+                    if(key1 == true)
+                    {
+                        if (hit.transform.gameObject.GetComponent<Door>().isOpened == true)
+                        {
+                            //close
+                            hit.transform.gameObject.GetComponent<Door>().CloseDoor(this.gameObject.transform);
+                        }
+                        else if (hit.transform.gameObject.GetComponent<Door>().isOpened == false)
+                        {
+                            //open
+                            hit.transform.gameObject.GetComponent<Door>().OpenDoor(this.gameObject.transform);
+                        }
+                    }
+                    else
+                    {
+                        raycastsubInfo.text = "The basement is locked. I need to find a key";
+                        StartCoroutine(delaySubText());
+                    }
+                }
             }
 
 
             
         }
+
+
     }
+
+    public IEnumerator delaySubText()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        raycastsubInfo.text = "";
+    }
+
+
 }
