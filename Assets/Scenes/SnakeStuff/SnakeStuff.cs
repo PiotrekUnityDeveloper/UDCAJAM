@@ -210,7 +210,12 @@ public class SnakeStuff : MonoBehaviour
         block.SetActive(false);
         */
 
-        GameObject.Find("GameManager").GetComponent<SnakeGameLoad>().ReloadGame();
+        if(GameObject.Find("GameManager").GetComponent<SnakeGameLoad>() != null)
+        {
+            GameObject.Find("GameManager").GetComponent<SnakeGameLoad>().ReloadGame();
+        }
+
+        
         //done :)
     }
 }
