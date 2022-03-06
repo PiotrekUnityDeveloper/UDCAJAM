@@ -26,13 +26,13 @@ public class SnakeStuff : MonoBehaviour
         block.SetActive(false);
 
         //coroutine trigger here
-        StartCoroutine(ShutdownDelay());
+        //StartCoroutine(ShutdownDelay());
     }
 
     public IEnumerator ShutdownDelay()
     {
-        yield return new WaitForSecondsRealtime(14f);
-        SceneManager.LoadSceneAsync("SampleScene");
+        yield return new WaitForSecondsRealtime(14f); //easy fix
+        //SceneManager.LoadSceneAsync("SampleScene");
     }
 
 
@@ -46,6 +46,7 @@ public class SnakeStuff : MonoBehaviour
             spawnpos = getRandomPos();
         }
         food = Instantiate(block);
+        food.tag = "snakeobj";
         food.transform.position = new Vector3(spawnpos.x, spawnpos.y, 1);
         food.GetComponent<SpriteRenderer>().material = foodmat;
         food.SetActive(true);
@@ -74,6 +75,7 @@ public class SnakeStuff : MonoBehaviour
     {
         head = Instantiate(block) as GameObject;
         head.GetComponent<SpriteRenderer>().material = headmat;
+        head.tag = "snakeobj";
         tail = new List<GameObject>();
     }
 
@@ -86,6 +88,8 @@ public class SnakeStuff : MonoBehaviour
 
             GameObject borderTop = Instantiate(block) as GameObject;
             borderTop.GetComponent<Transform>().position = new Vector3(x - xSize / 2, ySize-ySize / 2, 1);
+            borderBottom.tag = "snakeobj";
+            borderTop.tag = "snakeobj";
 
         }
 
@@ -97,7 +101,8 @@ public class SnakeStuff : MonoBehaviour
             GameObject borderLeft = Instantiate(block) as GameObject;
             borderLeft.GetComponent<Transform>().position = new Vector3(xSize-(xSize/2), y-(ySize/2), 1);
 
-
+            borderLeft.tag = "snakeobj";
+            borderRight.tag = "snakeobj";
         }
     }
 
@@ -153,6 +158,7 @@ public class SnakeStuff : MonoBehaviour
                 GameObject newTile = Instantiate(block);
                 newTile.SetActive(true);
                 newTile.transform.position = food.transform.position;
+                newTile.tag = "snakeobj";
                 DestroyImmediate(food);
                 head.GetComponent<SpriteRenderer>().material = tailmat;
                 tail.Add(head);
@@ -183,6 +189,28 @@ public class SnakeStuff : MonoBehaviour
 
     public void Gameover()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //done :)
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name); //done :)
+        //destroy all gameobject except the camera
+        //GameObject[] stuffinscene = (GameObject[])GameObject.FindObjectsOfType(typeof(MonoBehaviour));
+        /*
+        GameObject[] stuffinscene = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        foreach (GameObject g in stuffinscene)
+        {
+            if(g.tag != "MainCamera" && g.tag == "snakeobj")
+            {
+                Destroy(g);
+            }
+        }
+        //reload the game
+        timebetweenmovements = 0.5f;
+        dir = Vector2.right;
+        createGrid();
+        createPlayer();
+        spawnFood();
+        block.SetActive(false);
+        */
+
+        GameObject.Find("GameManager").GetComponent<SnakeGameLoad>().ReloadGame();
+        //done :)
     }
 }

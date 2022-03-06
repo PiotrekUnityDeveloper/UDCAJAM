@@ -31,11 +31,44 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = /*Input.GetAxis("Horizontal")*/0;
+        float z = /*Input.GetAxis("Vertical")*/0;
 
+        
+        
         Vector3 movedir = transform.right * x + transform.forward * z;
+
+        if (Input.GetKey(KeyCode.W)) //go up
+        {
+            z = 1;
+        }
+
+        if (Input.GetKey(KeyCode.S)) //go down
+        {
+            z = -1;
+        }
+
+        if (Input.GetKey(KeyCode.A)) //go left
+        {
+            x = -1;
+        }
+
+        if (Input.GetKey(KeyCode.D)) //go right
+        {
+            x = 1;
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            x = 0;
+            z = 0; //PLAYER CANNOT MOVE WITH ARROWS (they are supposed to work with snake game only)
+            goto tap1;
+        }
+
+        movedir = transform.right * x + transform.forward * z;
         charcontrol.Move(movedir * movementspeed * Time.deltaTime);
+
+        tap1:
 
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
