@@ -28,13 +28,13 @@ public class Pickup : MonoBehaviour
 
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0) && heldobj != null)
         {
             //drop obj
             DropObject();
         }
 
-        if(Input.GetMouseButton(1))
+        if(Input.GetMouseButton(1) && heldobj != null)
         {
             ThrowObject();
         }
@@ -69,15 +69,35 @@ public class Pickup : MonoBehaviour
 
     void DropObject()
     {
-        Rigidbody heldRig = heldobj.GetComponent<Rigidbody>();
-        heldobj.GetComponent<Rigidbody>().useGravity = true;
-        heldRig.drag = 1;
-        heldobj.transform.parent = null;
-        heldobj = null;
+        if(heldobj.GetComponent<Rigidbody>())
+        {
+            Rigidbody heldRig = heldobj.GetComponent<Rigidbody>();
+            heldobj.GetComponent<Rigidbody>().useGravity = true;
+            heldRig.drag = 1;
+            heldobj.transform.parent = null;
+            heldobj = null;
+        }
+
+        
+    }
+
+    void DropObjectforThrowing()
+    {
+        if (heldobj.GetComponent<Rigidbody>())
+        {
+            Rigidbody heldRig = heldobj.GetComponent<Rigidbody>();
+            heldobj.GetComponent<Rigidbody>().useGravity = true;
+            heldRig.drag = 1;
+            heldobj.transform.parent = null;
+            //heldobj = null;
+        }
     }
 
     void ThrowObject()
-    { 
-
+    {
+        
+        DropObjectforThrowing();
+        heldobj.GetComponent<Rigidbody>().AddForce(this.transform.forward * 925f);
+        heldobj = null;
     }
 }
