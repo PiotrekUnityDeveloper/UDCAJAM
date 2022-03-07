@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 using Cinemachine;
 public class CinemachineCameraToggle : MonoBehaviour
 {
@@ -7,7 +9,13 @@ public class CinemachineCameraToggle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(DelayCamera());
+    }
+
+    public IEnumerator DelayCamera()
+    {
+        yield return new WaitForSecondsRealtime(22);
+        vcamIndex = 0;
     }
 
     // Update is called once per frame
