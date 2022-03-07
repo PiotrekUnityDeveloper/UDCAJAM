@@ -162,6 +162,7 @@ public class SnakeStuff : MonoBehaviour
                 DestroyImmediate(food);
                 head.GetComponent<SpriteRenderer>().material = tailmat;
                 tail.Add(head);
+                //head.gameObject.GetComponent<Material>().GetMatrix
                 head = newTile;
                 head.GetComponent<SpriteRenderer>().material = headmat;
                 spawnFood();
