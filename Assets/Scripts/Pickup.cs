@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pickup : MonoBehaviour
 {
@@ -11,12 +12,26 @@ public class Pickup : MonoBehaviour
     public GameObject objHolder;
 
     public bool ExperimentalPhysics;
+    public LayerMask GroundLayer;
+    private bool wasground = false;
 
     public GameObject testObj;
+
+    public Text MainRay;
+    public Text SubRay;
+
+    public bool candrag;
     // Start is called before the first frame update
     void Start()
     {
-        
+        candrag = false;
+        StartCoroutine(DelayDrag());
+    }
+
+    private IEnumerator DelayDrag()
+    {
+        yield return new WaitForSecondsRealtime(22);
+        candrag = true;
     }
 
     private Vector3 savedForce;
@@ -24,7 +39,25 @@ public class Pickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+
+        if(candrag == false)
+        {
+            return;
+        }
+
+        RaycastHit hit1;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit1, pickuprange))
+        {
+            if(hit1.transform.gameObject.GetComponent<Rigidbody>() != null)
+            {
+                if(hit1.transform.gameObject.GetComponent<Rigidbody>().isKinematic == false)
+                {
+                    //SubRay.text = ""; maybe better not :/
+                }
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickuprange))
@@ -80,6 +113,21 @@ public class Pickup : MonoBehaviour
 
             objRig.transform.parent = objHolder.transform;
             heldobj = pickobj;
+
+            if(heldobj.layer == GroundLayer)
+            {
+                wasground = true;
+                heldobj.layer = LayerMask.GetMask("Default");
+
+                foreach(Transform t in heldobj.transform)
+                {
+                    t.gameObject.layer = LayerMask.GetMask("Default");
+                }
+            }
+            else
+            {
+                wasground = false;
+            }
         }
     }
 
@@ -95,6 +143,20 @@ public class Pickup : MonoBehaviour
             {
                 heldobj.GetComponent<Rigidbody>().velocity = savedForce; //restores force that was applied when dragging the obj (so player can throw items without right mouse button.... and with less force)
             }
+
+            if(wasground == true)
+            {
+                heldobj.layer = GroundLayer;
+
+                foreach (Transform t in heldobj.transform)
+                {
+                    t.gameObject.layer = GroundLayer;
+                }
+
+                wasground = false;
+            }
+            //else dont add the layer
+
             heldobj = null;
         }
 

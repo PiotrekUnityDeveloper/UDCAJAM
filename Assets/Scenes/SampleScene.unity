@@ -1333,7 +1333,13 @@ MonoBehaviour:
   moveForce: 280
   objHolder: {fileID: 276481679}
   ExperimentalPhysics: 0
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   testObj: {fileID: 1987378453}
+  MainRay: {fileID: 659731883}
+  SubRay: {fileID: 1668500375}
+  candrag: 0
 --- !u!1 &557490276
 GameObject:
   m_ObjectHideFlags: 0
@@ -8432,6 +8438,9 @@ MonoBehaviour:
   - {fileID: 485345751}
   - {fileID: 1428745325}
   vcamIndex: 1
+  pickup: {fileID: 485345754}
+  look: {fileID: 485345753}
+  movement: {fileID: 1401198581}
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0

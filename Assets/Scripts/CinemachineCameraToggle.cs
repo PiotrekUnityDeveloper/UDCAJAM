@@ -6,6 +6,10 @@ public class CinemachineCameraToggle : MonoBehaviour
 {
     public CinemachineVirtualCamera[] vcam;
     public int vcamIndex;
+
+    public Pickup pickup;
+    public PlayerLook look;
+    public PlayerMovement movement;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,14 @@ public class CinemachineCameraToggle : MonoBehaviour
             {
                 vcam[i].Priority = 10;
             }
+        }
+
+        if(Input.GetKey(KeyCode.Backspace))
+        {
+            vcamIndex = 0;
+            pickup.candrag = true;
+            look.canlook = true;
+            movement.canmove = true;
         }
     }
 }
