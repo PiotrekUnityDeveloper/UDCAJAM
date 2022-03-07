@@ -12,12 +12,22 @@ public class PlayerLook : MonoBehaviour
     public bool key1; //i know i could make a list but we have only 2 keys so no, na, nah thanks
     public bool key2;
 
+
+    public bool canlook;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         RenderSettings.fog = false;
-        
+        canlook = false;
+        StartCoroutine(DelayLook());
+    }
+
+    private IEnumerator DelayLook()
+    {
+        yield return new WaitForSecondsRealtime(24);
+        canlook = true;
     }
 
     [SerializeField] private LayerMask pickable;
@@ -33,6 +43,11 @@ public class PlayerLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(canlook == false)
+        {
+            return;
+        }
+
         float mousex = Input.GetAxis("Mouse X") * sensitivity;
         float mousey = Input.GetAxis("Mouse Y") * sensitivity;
 
@@ -136,6 +151,7 @@ public class PlayerLook : MonoBehaviour
         }
 
 
+        
     }
 
     public IEnumerator delaySubText()

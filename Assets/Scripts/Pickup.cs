@@ -9,11 +9,17 @@ public class Pickup : MonoBehaviour
     public float moveForce = 280f;
 
     public GameObject objHolder;
+
+    public bool ExperimentalPhysics;
+
+    public GameObject testObj;
     // Start is called before the first frame update
     void Start()
     {
         
     }
+
+    private Vector3 savedForce;
 
     // Update is called once per frame
     void Update()
@@ -39,6 +45,8 @@ public class Pickup : MonoBehaviour
             ThrowObject();
         }
 
+
+
         if(heldobj != null)
         {
             MoveObject();
@@ -51,7 +59,15 @@ public class Pickup : MonoBehaviour
         {
             Vector3 moveDir = (objHolder.transform.position - heldobj.transform.position);
             heldobj.GetComponent<Rigidbody>().AddForce(moveDir * moveForce);
+            //heldobj.GetComponent<Rigidbody>().useGravity = true;
+            //savedForce = heldobj.GetComponent<Rigidbody>().velocity;
+            //heldobj.GetComponent<Rigidbody>().useGravity = false;
         }
+
+        Vector3 moveDir2 = (objHolder.transform.position - heldobj.transform.position);
+        testObj.GetComponent<Rigidbody>().AddForce(moveDir2 * moveForce);
+
+        savedForce = testObj.GetComponent<Rigidbody>().velocity;
     }
 
     public void PickupObject(GameObject pickobj)
@@ -75,6 +91,10 @@ public class Pickup : MonoBehaviour
             heldobj.GetComponent<Rigidbody>().useGravity = true;
             heldRig.drag = 1;
             heldobj.transform.parent = null;
+            if(ExperimentalPhysics == true)
+            {
+                heldobj.GetComponent<Rigidbody>().velocity = savedForce; //restores force that was applied when dragging the obj (so player can throw items without right mouse button.... and with less force)
+            }
             heldobj = null;
         }
 

@@ -15,15 +15,29 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
 
     public float jumpHeight;
+
+    public bool canmove;
     // Start is called before the first frame update
     void Start()
     {
-        
+        canmove = false;
+        StartCoroutine(DelayMovement());
+    }
+
+    private IEnumerator DelayMovement()
+    {
+        yield return new WaitForSecondsRealtime(24);
+        canmove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(canmove == false)
+        {
+            return;
+        }
+
         isGrounded = Physics.CheckSphere(groundCheckObj.position, checkRadius, groundLayer);
 
         if(isGrounded && velocity.y < 0)
