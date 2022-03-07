@@ -33,8 +33,8 @@ public class PlayerLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mousex = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        float mousey = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        float mousex = Input.GetAxis("Mouse X") * sensitivity;
+        float mousey = Input.GetAxis("Mouse Y") * sensitivity;
 
         xrot -= mousey;
         xrot = Mathf.Clamp(xrot, -90f, 90);
