@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight;
 
     public bool canmove;
+
+    public GameObject playerObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +50,16 @@ public class PlayerMovement : MonoBehaviour
         float x = /*Input.GetAxis("Horizontal")*/0;
         float z = /*Input.GetAxis("Vertical")*/0;
 
-        
-        
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, 0.55f, playerObject.transform.localScale.z);
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, 1.3f, playerObject.transform.localScale.z);
+        }
+
         Vector3 movedir = transform.right * x + transform.forward * z;
 
         if (Input.GetKey(KeyCode.W)) //go up
