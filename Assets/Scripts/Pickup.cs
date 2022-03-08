@@ -114,10 +114,10 @@ public class Pickup : MonoBehaviour
             objRig.transform.parent = objHolder.transform;
             heldobj = pickobj;
 
-            if(heldobj.layer == GroundLayer)
+            if(heldobj.gameObject.layer == GroundLayer)
             {
                 wasground = true;
-                heldobj.layer = LayerMask.GetMask("Default");
+                heldobj.gameObject.layer = LayerMask.GetMask("Default");
 
                 foreach(Transform t in heldobj.transform)
                 {
@@ -146,7 +146,7 @@ public class Pickup : MonoBehaviour
 
             if(wasground == true)
             {
-                heldobj.layer = GroundLayer;
+                heldobj.gameObject.layer = GroundLayer;
 
                 foreach (Transform t in heldobj.transform)
                 {
