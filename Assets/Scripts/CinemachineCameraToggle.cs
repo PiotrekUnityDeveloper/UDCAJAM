@@ -10,17 +10,32 @@ public class CinemachineCameraToggle : MonoBehaviour
     public Pickup pickup;
     public PlayerLook look;
     public PlayerMovement movement;
+
+    public GameObject crosshairobj;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(DelayCamera());
+
+        if(PlayerPrefs.GetInt("skip", 0) == 1)
+        {
+            //skipping the cutscene
+            //vcamIndex = 0;
+            //pickup.candrag = true;
+            //look.canlook = true;
+            //movement.canmove = true;
+            PlayerPrefs.DeleteKey("skip");
+        }
     }
 
     public IEnumerator DelayCamera()
     {
         yield return new WaitForSecondsRealtime(22);
         vcamIndex = 0;
+        crosshairobj.SetActive(true);
     }
+
+    private bool loopdisabler;
 
     // Update is called once per frame
     void Update()
@@ -43,6 +58,19 @@ public class CinemachineCameraToggle : MonoBehaviour
             pickup.candrag = true;
             look.canlook = true;
             movement.canmove = true;
+            crosshairobj.SetActive(true);
+        }
+
+        if(PlayerPrefs.GetInt("skip", 0) == 1 && loopdisabler == false)
+        {
+            /*
+            vcamIndex = 0;
+            pickup.candrag = true;
+            look.canlook = true;
+            movement.canmove = true;
+
+            loopdisabler = true;
+            */
         }
     }
 }

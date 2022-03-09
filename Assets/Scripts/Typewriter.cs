@@ -35,11 +35,6 @@ public class Typewriter : MonoBehaviour
         if(Input.GetKey(KeyCode.Return) && canclose)
         {
             MonologuePanel.SetActive(false);
-            /*
-            pm.canmove = true;
-            pl.canlook = true;
-            pk.candrag = true;
-            */
         }
     }
 
@@ -60,32 +55,55 @@ public class Typewriter : MonoBehaviour
         else
             canclose = true;
 
-        /*
-        if(cannmove == false)
-        {
-            pm.canmove = false;
-        }
-
-        if(canlook == false)
-        {
-            pl.canlook = false;
-        }
-
-        if (canpickup == false)
-        {
-            pk.candrag = false;
-        }
-        */
 
         
 
         foreach(char c in phrase)
         {
-            yield return new WaitForSecondsRealtime(letterDelay);
+            yield return new WaitForSeconds(letterDelay);
             targetText.text += c;
         }
 
         enterinfo.SetActive(true);
         canclose = true;
+        StartCoroutine(autoclose());
+    }
+
+    public IEnumerator autoclose()
+    {
+        if(MonologuePanel.activeInHierarchy == true)
+        {
+            enterinfo.gameObject.GetComponent<Text>().text = "[ENTER TO CLOSE (" + 6 + ")]";
+        }
+        yield return new WaitForSeconds(1);
+        if (MonologuePanel.activeInHierarchy == true)
+        {
+            enterinfo.gameObject.GetComponent<Text>().text = "[ENTER TO CLOSE (" + 5 + ")]";
+        }
+        yield return new WaitForSeconds(1);
+        if (MonologuePanel.activeInHierarchy == true)
+        {
+            enterinfo.gameObject.GetComponent<Text>().text = "[ENTER TO CLOSE (" + 4 + ")]";
+        }
+        yield return new WaitForSeconds(1);
+        if (MonologuePanel.activeInHierarchy == true)
+        {
+            enterinfo.gameObject.GetComponent<Text>().text = "[ENTER TO CLOSE (" + 3 + ")]";
+        }
+        yield return new WaitForSeconds(1);
+        if (MonologuePanel.activeInHierarchy == true)
+        {
+            enterinfo.gameObject.GetComponent<Text>().text = "[ENTER TO CLOSE (" + 2 + ")]";
+        }
+        yield return new WaitForSeconds(1);
+        if (MonologuePanel.activeInHierarchy == true)
+        {
+            enterinfo.gameObject.GetComponent<Text>().text = "[ENTER TO CLOSE (" + 1 + ")]";
+        }
+        yield return new WaitForSeconds(1);
+        if (MonologuePanel.activeInHierarchy == true)
+        {
+            MonologuePanel.SetActive(false);
+        }
     }
 }

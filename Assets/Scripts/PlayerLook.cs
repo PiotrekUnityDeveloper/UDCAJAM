@@ -15,6 +15,8 @@ public class PlayerLook : MonoBehaviour
 
     public bool canlook;
 
+    public float pickuprange;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +76,7 @@ public class PlayerLook : MonoBehaviour
 
         RaycastHit checker;
         //hit.distance = 15;
-        if (Physics.Raycast(rayshooterobj.transform.position, rayshooterobj.transform.forward, out checker, 1500))
+        if (Physics.Raycast(rayshooterobj.transform.position, rayshooterobj.transform.forward, out checker, 3))
         {
             if(checker.collider.tag == "key1")
             {
@@ -99,7 +101,7 @@ public class PlayerLook : MonoBehaviour
             
             RaycastHit hit;
             //hit.distance = 15;
-            if (Physics.Raycast(rayshooterobj.transform.position, rayshooterobj.transform.forward, out hit, 1500))
+            if (Physics.Raycast(rayshooterobj.transform.position, rayshooterobj.transform.forward, out hit, 3))
             {
                 //Destroy(hit.transform.gameObject);
                 if(hit.collider.tag == "key1")

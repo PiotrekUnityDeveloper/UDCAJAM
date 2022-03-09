@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [ExecuteAlways]
 public class GameManager : MonoBehaviour
@@ -82,5 +83,82 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             isPaused = false;
         }
+    }
+
+    public GameObject restartask;
+    public void RestartDialog(bool state)
+    {
+        restartask.SetActive(state);
+
+        if(state == true)
+        {
+            Exitdialog.SetActive(false);
+        }
+    }
+
+    public void RestartGame(bool skipcutscene)
+    {
+        if(skipcutscene == false)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("skip", 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    public GameObject Exitdialog;
+
+    public void ToggleRestart()
+    {
+        if(restartask.activeInHierarchy == true)
+        {
+            restartask.SetActive(false);
+        }
+        else if (restartask.activeInHierarchy == false)
+        {
+            restartask.SetActive(true);
+        }
+
+        if (restartask.activeInHierarchy == true)
+        {
+            Exitdialog.SetActive(false);
+            //add more stuff here
+        }
+    }
+
+    public void ToggleExit()
+    {
+        if(Exitdialog.activeInHierarchy == true)
+        {
+            Exitdialog.SetActive(false);
+        }
+        else if (Exitdialog.activeInHierarchy == false)
+        {
+            Exitdialog.SetActive(true);
+        }
+
+        if(Exitdialog.activeInHierarchy == true)
+        {
+            restartask.SetActive(false);
+            //add more stuff here
+        }
+    }
+
+    public void ExitDialog(bool state)
+    {
+        Exitdialog.SetActive(state);
+
+        if(state == true)
+        {
+            restartask.SetActive(false);
+        }
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
