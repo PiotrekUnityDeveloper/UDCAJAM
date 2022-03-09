@@ -26,7 +26,7 @@ public class Typewriter : MonoBehaviour
     public IEnumerator DelayedMessage()
     {
         yield return new WaitForSecondsRealtime(26);
-        StartCoroutine(ShowMonologue("Oh FI_IC|<", false));
+        StartCoroutine(ShowMonologue("Oh FI_IC|<, the power is down", false));
     }
 
     // Update is called once per frame

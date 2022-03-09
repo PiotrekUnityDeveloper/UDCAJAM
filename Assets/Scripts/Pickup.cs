@@ -9,6 +9,8 @@ public class Pickup : MonoBehaviour
     private GameObject heldobj;
     public float moveForce = 280f;
 
+    public GameObject playerobj;
+
     public GameObject objHolder;
 
     public bool ExperimentalPhysics;
@@ -114,20 +116,26 @@ public class Pickup : MonoBehaviour
             objRig.transform.parent = objHolder.transform;
             heldobj = pickobj;
 
-            if(heldobj.gameObject.layer == GroundLayer)
+            //Physics.IgnoreCollision(playerobj.GetInstanceID<Collider>(), heldobj.get) use layers instead
+
+            //heldobj.tag = "nocollision";
+
+            if(heldobj.gameObject.layer == 6)
             {
                 wasground = true;
-                heldobj.gameObject.layer = LayerMask.GetMask("Default");
+                heldobj.gameObject.layer = 0;
 
                 foreach(Transform t in heldobj.transform)
                 {
-                    t.gameObject.layer = LayerMask.GetMask("Default");
+                    t.gameObject.layer = 0;
                 }
             }
             else
             {
                 wasground = false;
             }
+
+            print("heldobj layer: " + heldobj.layer);
         }
     }
 
@@ -146,11 +154,11 @@ public class Pickup : MonoBehaviour
 
             if(wasground == true)
             {
-                heldobj.gameObject.layer = GroundLayer;
+                heldobj.gameObject.layer = 6;
 
                 foreach (Transform t in heldobj.transform)
                 {
-                    t.gameObject.layer = GroundLayer;
+                    t.gameObject.layer = 6;
                 }
 
                 wasground = false;
@@ -172,6 +180,18 @@ public class Pickup : MonoBehaviour
             heldRig.drag = 1;
             heldobj.transform.parent = null;
             //heldobj = null;
+
+            if (wasground == true)
+            {
+                heldobj.gameObject.layer = 6;
+
+                foreach (Transform t in heldobj.transform)
+                {
+                    t.gameObject.layer = 6;
+                }
+
+                wasground = false;
+            }
         }
     }
 
