@@ -60,7 +60,18 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(isPaused == true && Cursor.lockState != CursorLockMode.None)
+        if (isPaused == true)
+        {
+
+            playermove.canmove = false;
+            playerlook.canlook = false;
+            pickup.candrag = false;
+            PauseMenu.SetActive(true);
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+
+        if (isPaused == true && Cursor.lockState != CursorLockMode.None)
         {
             Cursor.lockState = CursorLockMode.None;
         }

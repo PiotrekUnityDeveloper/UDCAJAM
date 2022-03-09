@@ -13561,7 +13561,7 @@ MonoBehaviour:
   frwrdRenderer: {fileID: 11400000, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
   postfxObj: {fileID: 653260035}
   PostfxOn: 0
-  canPause: 0
+  canPause: 1
   isPaused: 0
   PauseMenu: {fileID: 1513433300}
   playermove: {fileID: 1401198581}

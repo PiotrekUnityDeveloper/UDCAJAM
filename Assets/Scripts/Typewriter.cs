@@ -26,7 +26,7 @@ public class Typewriter : MonoBehaviour
     public IEnumerator DelayedMessage()
     {
         yield return new WaitForSecondsRealtime(26);
-        StartCoroutine(ShowMonologue("Hello, this is a clean looking test message which you can edit in any way you want :)", false, false, false, false));
+        StartCoroutine(ShowMonologue("Oh FI_IC|<", false));
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class Typewriter : MonoBehaviour
         }
     }
 
-    public IEnumerator ShowMonologue(string phrase, bool skippable, bool cannmove, bool canlook, bool canpickup)
+    public IEnumerator ShowMonologue(string phrase, bool skippable)
     {
         if(MonologuePanel.activeInHierarchy == true)
         {
