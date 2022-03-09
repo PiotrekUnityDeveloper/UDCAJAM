@@ -17,6 +17,8 @@ public class Typewriter : MonoBehaviour
     public PlayerLook pl;
     public Pickup pk;
 
+    private bool blocker1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,11 @@ public class Typewriter : MonoBehaviour
     public IEnumerator DelayedMessage()
     {
         yield return new WaitForSecondsRealtime(26);
-        StartCoroutine(ShowMonologue("Oh FI_IC|<, the power is down", false));
+        if(blocker1 == true)
+        {
+            StartCoroutine(ShowMonologue("Oh FI_IC|<, the power is down", false));
+        }
+        
     }
 
     // Update is called once per frame
@@ -36,6 +42,18 @@ public class Typewriter : MonoBehaviour
         {
             MonologuePanel.SetActive(false);
         }
+
+        if(Input.GetKey(KeyCode.Backspace) & blocker1 == true)
+        {
+            StartCoroutine(DelayedMessageSkip());
+            blocker1 = false;
+        }
+    }
+
+    public IEnumerator DelayedMessageSkip()
+    {
+        yield return new WaitForSeconds(2);
+        StartCoroutine(ShowMonologue("Oh FI_IC|<, the power is down", false));
     }
 
     public IEnumerator ShowMonologue(string phrase, bool skippable)
