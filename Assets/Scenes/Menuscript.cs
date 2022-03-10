@@ -27,7 +27,7 @@ public class Menuscript : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadSceneAsync("SampleScene");
     }
 
     public void VolUpdate1()
