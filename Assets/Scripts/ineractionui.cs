@@ -12,12 +12,22 @@ public class ineractionui : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         ///throw new System.NotImplementedException();
         btntxt.text = (">" + buttonText + "<");
+
+        if (btntxt.gameObject.activeInHierarchy == true)
+        {
+            btntxt.text = (">" + buttonText + "<");
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ///throw new System.NotImplementedException();
-        btntxt.text = ("> " + buttonText + " <");
+        
+
+        if(btntxt.gameObject.activeInHierarchy == true)
+        {
+            btntxt.text = ("> " + buttonText + " <");
+        }
     }
 
     // Start is called before the first frame update

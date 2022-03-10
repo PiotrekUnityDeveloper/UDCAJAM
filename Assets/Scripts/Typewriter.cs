@@ -19,6 +19,8 @@ public class Typewriter : MonoBehaviour
 
     private bool blocker1;
 
+    private int currentMonologue = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,11 @@ public class Typewriter : MonoBehaviour
         StartCoroutine(DelayedMessage());
     }
 
-    public AudioSource voice1;
+    //public AudioSource voice1;
+    //public AudioSource voice2;
+    //public AudioSource voice3; //using a list from now
+
+    public List<AudioSource> voiceovers = new List<AudioSource>();
 
     public IEnumerator DelayedMessage()
     {
@@ -34,7 +40,9 @@ public class Typewriter : MonoBehaviour
         if(blocker1 == true)
         {
             StartCoroutine(ShowMonologue("Oh FI_IC|<, the power is down", false));
-            voice1.Play();
+            currentMonologue = 1;
+            //voice1.Play();
+            voiceovers[0].Play(); //voiceover1 sound
             blocker1 = false;
         }
         
@@ -46,6 +54,22 @@ public class Typewriter : MonoBehaviour
         if(Input.GetKey(KeyCode.Return) && canclose)
         {
             MonologuePanel.SetActive(false);
+            CoroutineStopper();
+
+            if (currentMonologue == 1)
+            {
+                StartCoroutine(ShowMonologue("I think the fuses have blown", false));
+                voiceovers[1].Play(); //voiceover1 sound
+                currentMonologue += 1;
+            }
+            else if (currentMonologue == 2)
+            {
+                StartCoroutine(ShowMonologue("Well, i think i just have to replace them and i'll be back here", false));
+                voiceovers[2].Play(); //voiceover1 sound
+                currentMonologue += 1;
+            }
+
+
         }
 
         if(Input.GetKey(KeyCode.Backspace) & blocker1 == true)
@@ -55,11 +79,17 @@ public class Typewriter : MonoBehaviour
         }
     }
 
+    public void CoroutineStopper()
+    {
+        this.StopAllCoroutines();
+    }
+
     public IEnumerator DelayedMessageSkip()
     {
         yield return new WaitForSeconds(2);
         StartCoroutine(ShowMonologue("Oh FI_IC|<, the power is down", false));
-        voice1.Play();
+        currentMonologue = 1;
+        voiceovers[0].Play(); //voiceover1 sound
     }
 
     public IEnumerator ShowMonologue(string phrase, bool skippable)
@@ -128,6 +158,20 @@ public class Typewriter : MonoBehaviour
         if (MonologuePanel.activeInHierarchy == true)
         {
             MonologuePanel.SetActive(false);
+        }
+
+        //copy the currentmonolugue check here
+        if (currentMonologue == 1)
+        {
+            StartCoroutine(ShowMonologue("I think the fuses have blown", false));
+            voiceovers[1].Play(); //voiceover1 sound
+            currentMonologue += 1;
+        }
+        else if (currentMonologue == 2)
+        {
+            StartCoroutine(ShowMonologue("Well, i think i just have to replace them and i'll be back here", false));
+            voiceovers[2].Play(); //voiceover1 sound
+            currentMonologue += 1;
         }
     }
 }

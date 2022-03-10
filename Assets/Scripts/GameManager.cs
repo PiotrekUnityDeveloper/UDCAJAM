@@ -143,12 +143,12 @@ public class GameManager : MonoBehaviour
     {
         if(skipcutscene == false)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("GameReloader");
         }
         else
         {
-            PlayerPrefs.SetInt("skip", 1);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //PlayerPrefs.SetInt("skip", 1);
+            SceneManager.LoadScene("GameReloader");
         }
     }
 
@@ -268,10 +268,12 @@ public class GameManager : MonoBehaviour
         if(PlayerPrefs.GetInt("expphy", 0) == 0)
         {
             expphysicsswtich.ExperimentalPhysics = false;
+            expphysics.isOn = false;
         }
-        else
+        else if (PlayerPrefs.GetInt("expphy", 0) == 1)
         {
             expphysicsswtich.ExperimentalPhysics = true;
+            expphysics.isOn = true;
         }
     }
 
