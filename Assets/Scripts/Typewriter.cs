@@ -26,12 +26,15 @@ public class Typewriter : MonoBehaviour
         StartCoroutine(DelayedMessage());
     }
 
+    public AudioSource voice1;
+
     public IEnumerator DelayedMessage()
     {
         yield return new WaitForSecondsRealtime(26);
         if(blocker1 == true)
         {
             StartCoroutine(ShowMonologue("Oh FI_IC|<, the power is down", false));
+            voice1.Play();
             blocker1 = false;
         }
         
@@ -56,6 +59,7 @@ public class Typewriter : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         StartCoroutine(ShowMonologue("Oh FI_IC|<, the power is down", false));
+        voice1.Play();
     }
 
     public IEnumerator ShowMonologue(string phrase, bool skippable)
