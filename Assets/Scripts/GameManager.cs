@@ -322,9 +322,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Text copybtntext;
     public void CopyMusicGuyTag()
     {
         EditorGUIUtility.systemCopyBuffer = "iceBRG#3251";
+        copybtntext.text = "Copied to clipboard!"; 
     }
 
     public void OpenPiotre4Website()
