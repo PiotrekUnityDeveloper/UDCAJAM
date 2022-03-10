@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -168,6 +169,9 @@ public class GameManager : MonoBehaviour
         {
             Exitdialog.SetActive(false);
             settingsdialog.SetActive(false);
+            howtoplay.SetActive(false);
+            credits.SetActive(false);
+            Menudialog.SetActive(false);
             //add more stuff here
         }
     }
@@ -187,6 +191,9 @@ public class GameManager : MonoBehaviour
         {
             restartask.SetActive(false);
             settingsdialog.SetActive(false);
+            howtoplay.SetActive(false);
+            credits.SetActive(false);
+            Menudialog.SetActive(false);
             //add more stuff here
         }
     }
@@ -223,6 +230,9 @@ public class GameManager : MonoBehaviour
         {
             restartask.SetActive(false);
             Exitdialog.SetActive(false);
+            howtoplay.SetActive(false);
+            credits.SetActive(false);
+            Menudialog.SetActive(false);
             //add more stuff here
         }
     }
@@ -286,5 +296,92 @@ public class GameManager : MonoBehaviour
         ambientVol.value = PlayerPrefs.GetFloat("ambient", 0.5f);
         SFXvol.value = PlayerPrefs.GetFloat("sfx", 0.8f);
         musicVol.value = PlayerPrefs.GetFloat("music", 0.7f);
+    }
+
+    public GameObject howtoplay;
+
+    public void ToggleHowtoPlay()
+    {
+        if (howtoplay.activeInHierarchy == true)
+        {
+            howtoplay.SetActive(false);
+        }
+        else if (howtoplay.activeInHierarchy == false)
+        {
+            howtoplay.SetActive(true);
+        }
+
+        if (howtoplay.activeInHierarchy == true)
+        {
+            restartask.SetActive(false);
+            Exitdialog.SetActive(false);
+            settingsdialog.SetActive(false);
+            credits.SetActive(false);
+            Menudialog.SetActive(false);
+            //add more stuff here
+        }
+    }
+
+    public void CopyMusicGuyTag()
+    {
+        EditorGUIUtility.systemCopyBuffer = "iceBRG#3251";
+    }
+
+    public void OpenPiotre4Website()
+    {
+        Application.OpenURL("https://piotrekunitydeveloper.github.io/piotrek4.games-page-files-download-backup-ctth-malicious-security-leak-scam-prototype/");
+    }
+
+    public GameObject credits;
+    public GameObject Menudialog;
+
+    public void ToggleCredits()
+    {
+        if (credits.activeInHierarchy == true)
+        {
+            credits.SetActive(false);
+        }
+        else if (credits.activeInHierarchy == false)
+        {
+            credits.SetActive(true);
+        }
+
+        if (credits.activeInHierarchy == true)
+        {
+            restartask.SetActive(false);
+            Exitdialog.SetActive(false);
+            settingsdialog.SetActive(false);
+            howtoplay.SetActive(false);
+            Menudialog.SetActive(false);
+            //add more stuff here
+        }
+    }
+
+    public void ToggleMenuDialog()
+    {
+        if (Menudialog.activeInHierarchy == true)
+        {
+            Menudialog.SetActive(false);
+        }
+        else if (Menudialog.activeInHierarchy == false)
+        {
+            Menudialog.SetActive(true);
+        }
+
+        if (Menudialog.activeInHierarchy == true)
+        {
+            restartask.SetActive(false);
+            Exitdialog.SetActive(false);
+            settingsdialog.SetActive(false);
+            howtoplay.SetActive(false);
+            //Menudialog.SetActive(false);
+            credits.SetActive(false);
+            //add more stuff here
+        }
+    }
+
+    public void GotoMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

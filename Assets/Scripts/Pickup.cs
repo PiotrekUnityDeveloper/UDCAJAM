@@ -120,6 +120,8 @@ public class Pickup : MonoBehaviour
 
             //heldobj.tag = "nocollision";
 
+            testObj.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
             if(heldobj.gameObject.layer == 6)
             {
                 wasground = true;

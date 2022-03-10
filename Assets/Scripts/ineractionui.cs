@@ -7,16 +7,17 @@ using UnityEngine.UI;
 public class ineractionui : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public string buttonText;
+    public Text btntxt;
     public void OnPointerEnter(PointerEventData eventData)
     {
         ///throw new System.NotImplementedException();
-        this.gameObject.GetComponent<Text>().text = (">" + buttonText + "<");
+        btntxt.text = (">" + buttonText + "<");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ///throw new System.NotImplementedException();
-        this.gameObject.GetComponent<Text>().text = ("> " + buttonText + " <");
+        btntxt.text = ("> " + buttonText + " <");
     }
 
     // Start is called before the first frame update
