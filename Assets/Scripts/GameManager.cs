@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-[ExecuteAlways]
 public class GameManager : MonoBehaviour
 {
     public ForwardRendererData frwrdRenderer;
@@ -15,17 +15,29 @@ public class GameManager : MonoBehaviour
     //pause stuff
     public bool canPause;
 
+    public GameObject poweroff;
+    AudioSource[] sources;
+
     public bool isPaused;
     public GameObject PauseMenu;
 
     public PlayerMovement playermove;
     public PlayerLook playerlook;
     public Pickup pickup;
+
+    private void Awake()
+    {
+        sources = GameObject.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        UpdateAudioVolume();
+        UpdateExperimentalPhysics();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         canPause = false;
         StartCoroutine(DelayPauseMenu());
+        
     }
 
     public IEnumerator DelayPauseMenu()
@@ -37,17 +49,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AmbientOclussion = frwrdRenderer.rendererFeatures.Find(x => x.name == "AO");
-        AmbientOclussion.SetActive(PostfxOn);
-        postfxObj.SetActive(PostfxOn);
+        //print("test");
 
         if(Input.GetKey(KeyCode.Backspace))
         {
             canPause = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKey(KeyCode.Escape))
         {
+            Debug.Log("isPaused = " + isPaused);
+            Debug.Log("canPause = " + canPause);
+
             if (isPaused == false && canPause == true)
             {
                 
@@ -60,6 +73,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        AmbientOclussion = frwrdRenderer.rendererFeatures.Find(x => x.name == "AO");
+        AmbientOclussion.SetActive(PostfxOn);
+        postfxObj.SetActive(PostfxOn);
+
         if (isPaused == true)
         {
 
@@ -68,7 +85,7 @@ public class GameManager : MonoBehaviour
             pickup.candrag = false;
             PauseMenu.SetActive(true);
             Time.timeScale = 0;
-            isPaused = true;
+            //isPaused = true;
         }
 
         if (isPaused == true && Cursor.lockState != CursorLockMode.None)
@@ -136,6 +153,7 @@ public class GameManager : MonoBehaviour
         if (restartask.activeInHierarchy == true)
         {
             Exitdialog.SetActive(false);
+            settingsdialog.SetActive(false);
             //add more stuff here
         }
     }
@@ -154,6 +172,7 @@ public class GameManager : MonoBehaviour
         if(Exitdialog.activeInHierarchy == true)
         {
             restartask.SetActive(false);
+            settingsdialog.SetActive(false);
             //add more stuff here
         }
     }
@@ -171,5 +190,87 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public GameObject settingsdialog;
+
+    public void ToggleSettigs()
+    {
+        if (settingsdialog.activeInHierarchy == true)
+        {
+            settingsdialog.SetActive(false);
+        }
+        else if (settingsdialog.activeInHierarchy == false)
+        {
+            settingsdialog.SetActive(true);
+        }
+
+        if (settingsdialog.activeInHierarchy == true)
+        {
+            restartask.SetActive(false);
+            Exitdialog.SetActive(false);
+            //add more stuff here
+        }
+    }
+
+    public Slider ambientVol;
+    public Slider musicVol;
+    public Slider SFXvol;
+
+    public Toggle expphysics;
+    public Pickup expphysicsswtich;
+
+
+    public void SettingsDialogDone()
+    {
+        PlayerPrefs.SetFloat("ambient", ambientVol.value);
+        PlayerPrefs.SetFloat("music", musicVol.value);
+        PlayerPrefs.SetFloat("sfx", SFXvol.value);
+
+        expphysicsswtich.ExperimentalPhysics = expphysics.isOn;
+
+        if(expphysics.isOn == true)
+        {
+            PlayerPrefs.SetInt("expphy", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("expphy", 0);
+        }
+    }
+
+    public void UpdateExperimentalPhysics()
+    {
+        if(PlayerPrefs.GetInt("expphy", 0) == 0)
+        {
+            expphysicsswtich.ExperimentalPhysics = false;
+        }
+        else
+        {
+            expphysicsswtich.ExperimentalPhysics = true;
+        }
+    }
+
+    public void UpdateAudioVolume()
+    {
+        foreach(AudioSource audiosrc in sources)
+        {
+            if(audiosrc.gameObject.tag == "music")
+            {
+                audiosrc.volume = PlayerPrefs.GetFloat("music", 0.7f);
+            }
+            else if (audiosrc.gameObject.tag == "sfx")
+            {
+                audiosrc.volume = PlayerPrefs.GetFloat("sfx", 0.8f);
+            }
+            else if (audiosrc.gameObject.tag == "ambient")
+            {
+                audiosrc.volume = PlayerPrefs.GetFloat("ambient", 0.5f);
+            }
+        }
+
+        ambientVol.value = PlayerPrefs.GetFloat("ambient", 0.5f);
+        SFXvol.value = PlayerPrefs.GetFloat("sfx", 0.8f);
+        musicVol.value = PlayerPrefs.GetFloat("music", 0.7f);
     }
 }

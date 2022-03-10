@@ -22,6 +22,7 @@ public class Typewriter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        blocker1 = true;
         StartCoroutine(DelayedMessage());
     }
 
@@ -31,6 +32,7 @@ public class Typewriter : MonoBehaviour
         if(blocker1 == true)
         {
             StartCoroutine(ShowMonologue("Oh FI_IC|<, the power is down", false));
+            blocker1 = false;
         }
         
     }
