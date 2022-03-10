@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     //pause stuff
     public bool canPause;
 
-    public GameObject poweroff;
+    //public GameObject poweroff; <-- unused
     AudioSource[] sources;
 
     public bool isPaused;
@@ -37,6 +37,14 @@ public class GameManager : MonoBehaviour
     {
         canPause = false;
         StartCoroutine(DelayPauseMenu());
+        StartCoroutine(blocker());
+        snakemusic.Play();
+    }
+
+    public IEnumerator blocker()
+    {
+        yield return new WaitForSecondsRealtime(22);
+        snakeblocker.SetActive(true);
         
     }
 
@@ -46,6 +54,9 @@ public class GameManager : MonoBehaviour
         canPause = true;
     }
 
+    public AudioSource snakemusic;
+    public GameObject snakeblocker;
+
     // Update is called once per frame
     void Update()
     {
@@ -54,6 +65,9 @@ public class GameManager : MonoBehaviour
         if(Input.GetKey(KeyCode.Backspace))
         {
             canPause = true;
+            //enable snake blockviewer and stop snake music here
+            snakemusic.Stop();
+            snakeblocker.SetActive(true);
         }
 
         if(Input.GetKey(KeyCode.Escape))

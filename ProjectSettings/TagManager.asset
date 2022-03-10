@@ -9,6 +9,9 @@ TagManager:
   - lockeddoor1
   - door
   - snakeobj
+  - music
+  - sfx
+  - ambient
   layers:
   - Default
   - TransparentFX
