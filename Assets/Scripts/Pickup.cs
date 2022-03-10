@@ -103,6 +103,8 @@ public class Pickup : MonoBehaviour
         testObj.GetComponent<Rigidbody>().AddForce(moveDir2 * moveForce);
 
         savedForce = testObj.GetComponent<Rigidbody>().velocity;
+
+        
     }
 
     public void PickupObject(GameObject pickobj)
