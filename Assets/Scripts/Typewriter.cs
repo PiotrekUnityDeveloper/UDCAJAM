@@ -59,13 +59,14 @@ public class Typewriter : MonoBehaviour
             if (currentMonologue == 1)
             {
                 StartCoroutine(ShowMonologue("I think the fuses have blown", false));
-                voiceovers[1].Play(); //voiceover1 sound
+                voiceovers[1].Play(); //voiceover2 sound //too lazy to update these comments up :/
                 currentMonologue += 1;
             }
             else if (currentMonologue == 2)
             {
                 StartCoroutine(ShowMonologue("Well, i think i just have to replace them and i'll be back here", false));
-                voiceovers[2].Play(); //voiceover1 sound
+                voiceovers[2].Play(); //voiceover3 sound
+                this.gameObject.GetComponent<MissionManager>().NextMission();
                 currentMonologue += 1;
             }
 
@@ -123,6 +124,11 @@ public class Typewriter : MonoBehaviour
         StartCoroutine(autoclose());
     }
 
+    public void SecondMission()
+    {
+        StartCoroutine(ShowMonologue("Oh $#|+, the basement is locked. Where did i put the keys?", false));
+    }
+
     public IEnumerator autoclose()
     {
         if(MonologuePanel.activeInHierarchy == true)
@@ -171,6 +177,15 @@ public class Typewriter : MonoBehaviour
         {
             StartCoroutine(ShowMonologue("Well, i think i just have to replace them and i'll be back here", false));
             voiceovers[2].Play(); //voiceover1 sound
+            this.gameObject.GetComponent<MissionManager>().NextMission();
+            currentMonologue += 1;
+        }
+        else if (currentMonologue == 3)
+        {
+            //StartCoroutine(ShowMonologue("Well, i think i just have to replace them and i'll be back here", false));
+            //voiceovers[3].Play(); //future voiceover
+            //this.gameObject.GetComponent<MissionManager>().NextMission();
+            //USE THIS (IT IS EMPTY RN PLS DONT IGNORE)
             currentMonologue += 1;
         }
     }

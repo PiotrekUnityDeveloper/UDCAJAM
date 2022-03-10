@@ -46,7 +46,8 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(22);
         snakeblocker.SetActive(true);
-        
+        firstambient.Play();
+        shutdownsound.Play();
     }
 
     public IEnumerator DelayPauseMenu()
@@ -57,6 +58,9 @@ public class GameManager : MonoBehaviour
 
     public AudioSource snakemusic;
     public GameObject snakeblocker;
+
+    public AudioSource firstambient;
+    public AudioSource shutdownsound;
 
     // Update is called once per frame
     void Update()
@@ -69,6 +73,8 @@ public class GameManager : MonoBehaviour
             //enable snake blockviewer and stop snake music here
             snakemusic.Stop();
             snakeblocker.SetActive(true);
+            firstambient.Play();
+            shutdownsound.Play();
         }
 
         if(Input.GetKey(KeyCode.Escape))

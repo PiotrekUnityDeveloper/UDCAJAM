@@ -17,6 +17,9 @@ public class PlayerLook : MonoBehaviour
 
     public float pickuprange;
 
+    public MissionManager mm;
+    public Typewriter tw;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -142,7 +145,12 @@ public class PlayerLook : MonoBehaviour
                     }
                     else
                     {
-                        raycastsubInfo.text = "The basement is locked. I need to find a key";
+                        raycastsubInfo.text = "The basement is locked";
+                        if(mm.currentMission == 1)
+                        {
+                            mm.NextMission();
+                            tw.SecondMission();
+                        }
                         StartCoroutine(delaySubText());
                     }
                 }
