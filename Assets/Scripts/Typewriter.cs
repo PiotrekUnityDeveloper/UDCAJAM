@@ -154,6 +154,13 @@ public class Typewriter : MonoBehaviour
         
     }
 
+    public void BeforeJumpscare()
+    {
+        CoroutineStopper();
+        StartCoroutine(ShowMonologue("Oh no! I dont have a new fuse! There should be one in this basement tho", false));
+        //voiceovers[6].Play(); //future voiceover
+    }
+
     public IEnumerator autoclose()
     {
         if(MonologuePanel.activeInHierarchy == true)

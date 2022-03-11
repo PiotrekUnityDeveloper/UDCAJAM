@@ -50,6 +50,26 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private LayerMask raytarget;
 
     public GameObject rayshooterobj;
+
+    public GameObject jumpscareobj;
+    public AudioSource jumpscaresound;
+
+    public GameObject bloodyOverlay;
+
+    public IEnumerator JumpscarePlayer()
+    {
+        yield return new WaitForSeconds(7);
+        jumpscareobj.SetActive(true);
+        jumpscaresound.Play();
+        bloodyOverlay.SetActive(true);
+        StartCoroutine(Hidebloodyoverlay());
+    }
+
+    private IEnumerator Hidebloodyoverlay()
+    {
+        yield return new WaitForSeconds(15);
+        bloodyOverlay.SetActive(false);
+    }
     
 
     // Update is called once per frame
@@ -108,6 +128,10 @@ public class PlayerLook : MonoBehaviour
             {
                 raycastInfo.text = "Candle";
             }
+            else if (checker.collider.tag == "fusebox")
+            {
+                raycastInfo.text = "Fuse box thing [E]";
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -133,6 +157,16 @@ public class PlayerLook : MonoBehaviour
                         mm.NextMission();
                         tw.ThirdMission();
                     }
+                }
+                else if (hit.collider.tag == "fusebox")
+                {
+                    tw.BeforeJumpscare();
+                    if (mm.currentMission == 5)
+                    {
+                        mm.NextMission();
+                        StartCoroutine(JumpscarePlayer()); //jumpscare occurs after like 4 seconds or smth i dont remember sry
+                    }
+
                 }
                 else if (hit.collider.tag == "door" && hit.transform.gameObject.GetComponent<Door>() != null)
                 {

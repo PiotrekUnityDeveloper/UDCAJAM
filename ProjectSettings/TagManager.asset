@@ -13,6 +13,7 @@ TagManager:
   - sfx
   - ambient
   - candle
+  - fusebox
   layers:
   - Default
   - TransparentFX
