@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor;
 
+
 public class GameManager : MonoBehaviour
 {
     public ForwardRendererData frwrdRenderer;
