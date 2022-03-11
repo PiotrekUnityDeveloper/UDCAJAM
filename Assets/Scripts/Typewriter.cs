@@ -130,6 +130,12 @@ public class Typewriter : MonoBehaviour
         voiceovers[3].Play(); //fourth
     }
 
+    public void ThirdMission()
+    {
+        StartCoroutine(ShowMonologue("Okay got em!", false));
+        voiceovers[4].Play(); //fifth
+    }
+
     public IEnumerator autoclose()
     {
         if(MonologuePanel.activeInHierarchy == true)
