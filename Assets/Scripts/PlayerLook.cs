@@ -148,6 +148,11 @@ public class PlayerLook : MonoBehaviour
                         {
                             //open
                             hit.transform.gameObject.GetComponent<Door>().OpenDoor(this.gameObject.transform);
+                            if (mm.currentMission == 2)//mission called: "find the basement key"
+                            {
+                                mm.NextMission();
+                                tw.FourthMission();
+                            }
                         }
                     }
                     else

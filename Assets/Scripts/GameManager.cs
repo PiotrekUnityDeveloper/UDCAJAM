@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor;
-
+using System.Runtime.InteropServices;
 
 public class GameManager : MonoBehaviour
 {
@@ -340,8 +340,28 @@ public class GameManager : MonoBehaviour
 
     public void OpenPiotre4Website()
     {
-        Application.OpenURL("https://piotrekunitydeveloper.github.io/piotrek4.games-page-files-download-backup-ctth-malicious-security-leak-scam-prototype/");
+        if(Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            openIt("https://piotrekunitydeveloper.github.io/piotrek4.games-page-files-download-backup-ctth-malicious-security-leak-scam-prototype/");
+        }
+        else
+        {
+            Application.OpenURL("https://piotrekunitydeveloper.github.io/piotrek4.games-page-files-download-backup-ctth-malicious-security-leak-scam-prototype/");
+        }
+        
     }
+
+    [DllImport("__Internal")]
+    private static extern void OpenNewTab(string url);
+
+    public void openIt(string url)
+    {
+#if !UNITY_EDITOR && UNITY_WEBGL
+             OpenNewTab(url);
+#endif
+    }
+
+    
 
     public GameObject credits;
     public GameObject Menudialog;

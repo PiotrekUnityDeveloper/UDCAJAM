@@ -138,6 +138,11 @@ public class Typewriter : MonoBehaviour
         voiceovers[4].Play(); //fifth
     }
 
+    public void FourthMission()
+    {
+
+    }
+
     public IEnumerator autoclose()
     {
         if(MonologuePanel.activeInHierarchy == true)

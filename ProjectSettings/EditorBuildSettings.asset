@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameReloader.unity
     guid: 70c543510ddbcb947982aa5b4b2d8831
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: d4d655b53c742724787731de114cc70e
   m_configObjects: {}
