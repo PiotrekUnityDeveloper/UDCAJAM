@@ -268,6 +268,9 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("expphy", 0);
         }
+
+        UpdateAudioVolume();
+        UpdateExperimentalPhysics();
     }
 
     public void UpdateExperimentalPhysics()
@@ -290,7 +293,7 @@ public class GameManager : MonoBehaviour
         {
             if(audiosrc.gameObject.tag == "music")
             {
-                audiosrc.volume = PlayerPrefs.GetFloat("music", 0.7f);
+                audiosrc.volume = PlayerPrefs.GetFloat("music", 0.3f);
             }
             else if (audiosrc.gameObject.tag == "sfx")
             {
@@ -304,7 +307,7 @@ public class GameManager : MonoBehaviour
 
         ambientVol.value = PlayerPrefs.GetFloat("ambient", 0.5f);
         SFXvol.value = PlayerPrefs.GetFloat("sfx", 0.8f);
-        musicVol.value = PlayerPrefs.GetFloat("music", 0.7f);
+        musicVol.value = PlayerPrefs.GetFloat("music", 0.3f);
     }
 
     public GameObject howtoplay;

@@ -6,15 +6,20 @@ public class Door : MonoBehaviour
 {
     public bool Vertical;
 
+    public bool defStats = true;
     private bool canrotate;
 
     public bool isOpened;
     // Start is called before the first frame update
     void Start()
     {
-        opened1 = new Quaternion(this.transform.rotation.x, this.transform.rotation.y + 60f, this.transform.rotation.z, this.transform.rotation.w);
-        opened2 = new Quaternion(this.transform.rotation.x, this.transform.rotation.y - 60f, this.transform.rotation.z, this.transform.rotation.w);
-        closed = this.transform.rotation;
+        if(defStats == true)
+        {
+            opened1 = new Quaternion(this.transform.rotation.x, this.transform.rotation.y + 60f, this.transform.rotation.z, this.transform.rotation.w);
+            opened2 = new Quaternion(this.transform.rotation.x, this.transform.rotation.y - 60f, this.transform.rotation.z, this.transform.rotation.w);
+            closed = this.transform.rotation;
+        }
+        
     }
 
     int lerpcounter;

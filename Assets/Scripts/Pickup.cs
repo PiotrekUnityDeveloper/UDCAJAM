@@ -42,6 +42,15 @@ public class Pickup : MonoBehaviour
     void Update()
     {
 
+        if(ExperimentalPhysics == true)
+        {
+            testObj.SetActive(true);
+        }
+        else
+        {
+            testObj.SetActive(false);
+        }
+
         if(candrag == false)
         {
             return;
