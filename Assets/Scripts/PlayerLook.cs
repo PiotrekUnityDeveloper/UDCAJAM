@@ -7,6 +7,7 @@ public class PlayerLook : MonoBehaviour
 {
     public float sensitivity;
     public Transform playerbean;
+    public GameObject newPlayer;
     public float xrot;
 
     public bool key1; //i know i could make a list but we have only 2 keys so no, na, nah thanks
@@ -127,15 +128,17 @@ public class PlayerLook : MonoBehaviour
                 }
                 else if (hit.collider.tag == "door" && hit.transform.gameObject.GetComponent<Door>() != null)
                 {
-                    if(hit.transform.gameObject.GetComponent<Door>().isOpened == true)
+                    if(hit.transform.gameObject.GetComponent<DoorTest>().IsOpen == true)
                     {
                         //close
-                        hit.transform.gameObject.GetComponent<Door>().CloseDoor(this.gameObject.transform);
+                        hit.transform.gameObject.GetComponent<DoorTest>().Close();
+                        //hit.transform.gameObject.GetComponent<Door>().CloseDoor(this.gameObject.transform);
                     }
-                    else if (hit.transform.gameObject.GetComponent<Door>().isOpened == false)
+                    else if (hit.transform.gameObject.GetComponent<DoorTest>().IsOpen == false)
                     {
                         //open
-                        hit.transform.gameObject.GetComponent<Door>().OpenDoor(this.gameObject.transform);
+                        hit.transform.gameObject.GetComponent<DoorTest>().Open(newPlayer.transform.position);
+                        //hit.transform.gameObject.GetComponent<Door>().OpenDoor(this.gameObject.transform);
                     }
                 }
                 else if (hit.collider.tag == "lockeddoor1" && hit.transform.gameObject.GetComponent<Door>() != null)
@@ -143,6 +146,26 @@ public class PlayerLook : MonoBehaviour
 
                     if(key1 == true)
                     {
+                        if (hit.transform.gameObject.GetComponent<DoorTest>().IsOpen == true)
+                        {
+                            //close
+                            hit.transform.gameObject.GetComponent<DoorTest>().Close();
+                            //hit.transform.gameObject.GetComponent<Door>().CloseDoor(this.gameObject.transform);
+                        }
+                        else if (hit.transform.gameObject.GetComponent<DoorTest>().IsOpen == false)
+                        {
+                            //open
+                            hit.transform.gameObject.GetComponent<DoorTest>().Open(newPlayer.transform.position);
+                            //hit.transform.gameObject.GetComponent<Door>().OpenDoor(this.gameObject.transform);
+                            if (mm.currentMission == 2)//mission called: "find the basement key"
+                            {
+                                mm.NextMission();
+                                tw.FourthMission(); //umm...
+                            }
+                        }
+
+                        //old code
+                        /*
                         if (hit.transform.gameObject.GetComponent<Door>().isOpened == true)
                         {
                             //close
@@ -158,6 +181,7 @@ public class PlayerLook : MonoBehaviour
                                 tw.FourthMission();
                             }
                         }
+                        */
                     }
                     else
                     {

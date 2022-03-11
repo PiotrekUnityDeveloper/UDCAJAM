@@ -2708,7 +2708,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.106079, y: -142.95389}
+  m_AnchoredPosition: {x: -10.105957, y: -142.95386}
   m_SizeDelta: {x: -815.2122, y: -285.9178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231961948
@@ -3393,7 +3393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.106079, y: 0.0025634766}
+  m_AnchoredPosition: {x: -10.105957, y: 0.0025634766}
   m_SizeDelta: {x: -815.2122, y: -0.0048828}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288992619
@@ -5388,6 +5388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 10
   playerbean: {fileID: 1401198577}
+  newPlayer: {fileID: 892680268}
   xrot: 0
   key1: 0
   key2: 0
@@ -5562,6 +5563,7 @@ GameObject:
   - component: {fileID: 528379621}
   - component: {fileID: 528379623}
   - component: {fileID: 528379622}
+  - component: {fileID: 528379624}
   m_Layer: 0
   m_Name: DoorHolder (4)
   m_TagString: door
@@ -5616,6 +5618,25 @@ MonoBehaviour:
   opened2: {x: 0, y: 0, z: 0, w: 0}
   closed: {x: 0, y: 0, z: 0, w: 0}
   rotType: 0
+--- !u!114 &528379624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528379620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e25bf295c392c44b4eceabc7cd4b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOpen: 0
+  IsRotatingDoor: 1
+  Speed: 1
+  RotationAmount: 90
+  ForwardDirection: 0
+  SlideDirection: {x: 0, y: 0, z: -1}
+  SlideAmount: 1.9
 --- !u!1 &544364486
 GameObject:
   m_ObjectHideFlags: 0
@@ -6841,6 +6862,7 @@ GameObject:
   - component: {fileID: 692372659}
   - component: {fileID: 692372661}
   - component: {fileID: 692372660}
+  - component: {fileID: 692372662}
   m_Layer: 0
   m_Name: DoorHolder (2)
   m_TagString: door
@@ -6895,6 +6917,25 @@ MonoBehaviour:
   opened2: {x: 0, y: 0.00061097933, z: 0, w: -0.9999998}
   closed: {x: 0, y: 0, z: 0, w: 0}
   rotType: 0
+--- !u!114 &692372662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692372658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e25bf295c392c44b4eceabc7cd4b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOpen: 0
+  IsRotatingDoor: 1
+  Speed: 1
+  RotationAmount: 90
+  ForwardDirection: 0
+  SlideDirection: {x: 0, y: 0, z: -1}
+  SlideAmount: 1.9
 --- !u!1 &700138657
 GameObject:
   m_ObjectHideFlags: 0
@@ -6906,6 +6947,7 @@ GameObject:
   - component: {fileID: 700138658}
   - component: {fileID: 700138660}
   - component: {fileID: 700138659}
+  - component: {fileID: 700138661}
   m_Layer: 0
   m_Name: DoorHolder (3)
   m_TagString: door
@@ -6960,6 +7002,25 @@ MonoBehaviour:
   opened2: {x: 0, y: 0, z: 0, w: 0}
   closed: {x: 0, y: 0, z: 0, w: 0}
   rotType: 0
+--- !u!114 &700138661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700138657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e25bf295c392c44b4eceabc7cd4b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOpen: 0
+  IsRotatingDoor: 1
+  Speed: 1
+  RotationAmount: 90
+  ForwardDirection: 0
+  SlideDirection: {x: 0, y: 0, z: -1}
+  SlideAmount: 1.9
 --- !u!1 &700238282
 GameObject:
   m_ObjectHideFlags: 0
@@ -16422,6 +16483,7 @@ GameObject:
   - component: {fileID: 1217229318}
   - component: {fileID: 1217229320}
   - component: {fileID: 1217229319}
+  - component: {fileID: 1217229321}
   m_Layer: 0
   m_Name: DoorHolder (1)
   m_TagString: door
@@ -16476,6 +16538,25 @@ MonoBehaviour:
   opened2: {x: 0, y: -0.71306694, z: 0, w: 0.701096}
   closed: {x: 0, y: 0, z: 0, w: 0}
   rotType: 0
+--- !u!114 &1217229321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217229317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e25bf295c392c44b4eceabc7cd4b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOpen: 0
+  IsRotatingDoor: 1
+  Speed: 1
+  RotationAmount: 90
+  ForwardDirection: 0
+  SlideDirection: {x: 0, y: 0, z: -1}
+  SlideAmount: 1.9
 --- !u!1 &1219392273
 GameObject:
   m_ObjectHideFlags: 0
@@ -26047,7 +26128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.106079, y: -142.95389}
+  m_AnchoredPosition: {x: -10.105957, y: -142.95386}
   m_SizeDelta: {x: -815.2122, y: -285.9178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736998782
@@ -26512,6 +26593,7 @@ GameObject:
   - component: {fileID: 1776773863}
   - component: {fileID: 1776773862}
   - component: {fileID: 1776773861}
+  - component: {fileID: 1776773864}
   m_Layer: 0
   m_Name: DoorHolder
   m_TagString: door
@@ -26566,6 +26648,25 @@ Transform:
   m_Father: {fileID: 1088789125}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1776773864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776773860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e25bf295c392c44b4eceabc7cd4b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOpen: 0
+  IsRotatingDoor: 1
+  Speed: 1
+  RotationAmount: 90
+  ForwardDirection: 0
+  SlideDirection: {x: 0, y: 0, z: -1}
+  SlideAmount: 1.9
 --- !u!1 &1778838998
 GameObject:
   m_ObjectHideFlags: 0
