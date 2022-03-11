@@ -200,15 +200,8 @@ public class PlayerLook : MonoBehaviour
                             tw.SecondMission();
                             TargetKey.SetActive(true);
 
-                            int e = Random.Range(1, 3);
-                            if(e == 1)
-                            {
-                                BasementAmbient1.Play();
-                            }
-                            else
-                            {
-                                BasementAmbient2.Play();
-                            }
+                            BasementAmbient1.Play();
+
                         }
                         StartCoroutine(delaySubText());
                     }
