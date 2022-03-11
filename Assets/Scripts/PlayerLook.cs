@@ -97,6 +97,10 @@ public class PlayerLook : MonoBehaviour
             {
                 raycastInfo.text = "Doors";
             }
+            else if (checker.collider.tag == "candle")
+            {
+                raycastInfo.text = "Candle";
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E))

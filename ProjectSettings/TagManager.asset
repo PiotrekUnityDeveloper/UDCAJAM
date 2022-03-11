@@ -12,6 +12,7 @@ TagManager:
   - music
   - sfx
   - ambient
+  - candle
   layers:
   - Default
   - TransparentFX
