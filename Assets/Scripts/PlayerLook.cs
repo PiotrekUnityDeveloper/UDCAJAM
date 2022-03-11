@@ -118,6 +118,7 @@ public class PlayerLook : MonoBehaviour
                     if(mm.currentMission == 2)//mission called: "find the basement key"
                     {
                         mm.NextMission();
+                        tw.ThirdMission();
                     }
                 }
                 else if (hit.collider.tag == "door" && hit.transform.gameObject.GetComponent<Door>() != null)

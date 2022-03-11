@@ -132,7 +132,7 @@ public class Typewriter : MonoBehaviour
 
     public void ThirdMission()
     {
-        StartCoroutine(ShowMonologue("Okay got em!", false));
+        StartCoroutine(ShowMonologue("Got em!", false));
         voiceovers[4].Play(); //fifth
     }
 
