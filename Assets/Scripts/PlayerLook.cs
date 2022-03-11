@@ -21,6 +21,12 @@ public class PlayerLook : MonoBehaviour
     public MissionManager mm;
     public Typewriter tw;
 
+    public AudioSource MainAmient;
+    public AudioSource BasementAmbient1;
+    public AudioSource BasementAmbient2;
+
+    public GameObject TargetKey;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +117,8 @@ public class PlayerLook : MonoBehaviour
             //hit.distance = 15;
             if (Physics.Raycast(rayshooterobj.transform.position, rayshooterobj.transform.forward, out hit, 3))
             {
+                raycastsubInfo.text = "";
+
                 //Destroy(hit.transform.gameObject);
                 if(hit.collider.tag == "key1")
                 {
@@ -157,7 +165,7 @@ public class PlayerLook : MonoBehaviour
                             //open
                             hit.transform.gameObject.GetComponent<DoorTest>().Open(newPlayer.transform.position);
                             //hit.transform.gameObject.GetComponent<Door>().OpenDoor(this.gameObject.transform);
-                            if (mm.currentMission == 2)//mission called: "find the basement key"
+                            if (mm.currentMission == 3)///mission called: "find the basement key"
                             {
                                 mm.NextMission();
                                 tw.FourthMission(); //umm...
@@ -190,6 +198,17 @@ public class PlayerLook : MonoBehaviour
                         {
                             mm.NextMission();
                             tw.SecondMission();
+                            TargetKey.SetActive(true);
+
+                            int e = Random.Range(1, 3);
+                            if(e == 1)
+                            {
+                                BasementAmbient1.Play();
+                            }
+                            else
+                            {
+                                BasementAmbient2.Play();
+                            }
                         }
                         StartCoroutine(delaySubText());
                     }

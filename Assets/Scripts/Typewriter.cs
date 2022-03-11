@@ -140,7 +140,18 @@ public class Typewriter : MonoBehaviour
 
     public void FourthMission()
     {
+        //CoroutineStopper();
+        //StartCoroutine(ShowMonologue("Got em!", false));
+        //voiceovers[5].Play(); //fifth
+        
+    }
 
+    public void FifthMission()
+    {
+        CoroutineStopper();
+        StartCoroutine(ShowMonologue("Bro why this basement looks like it hasn't been cleaned for I=/_/C|%G twelve centuries?", false));
+        voiceovers[5].Play();
+        
     }
 
     public IEnumerator autoclose()
@@ -202,5 +213,14 @@ public class Typewriter : MonoBehaviour
             //USE THIS (IT IS EMPTY RN PLS DONT IGNORE)
             currentMonologue += 1;
         }
+        else if (currentMonologue == 4)
+        {
+            //StartCoroutine(ShowMonologue("Well, i think i just have to replace them and i'll be back here", false));
+            //voiceovers[3].Play(); //future voiceover
+            //this.gameObject.GetComponent<MissionManager>().NextMission();
+            //USE THIS (IT IS EMPTY RN PLS DONT IGNORE)
+            currentMonologue += 1;
+        }
+
     }
 }

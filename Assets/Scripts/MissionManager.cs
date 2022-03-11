@@ -34,6 +34,7 @@ public class MissionManager : MonoBehaviour
     {
         currentMission += 1;
         currentMissionArrow.SetActive(true);
+        print(currentMission);
 
         switch (currentMission)
         {
@@ -60,6 +61,18 @@ public class MissionManager : MonoBehaviour
                 GameObject j = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
                 j.transform.SetParent(missionMarkParent.transform, false);
                 j.transform.GetChild(0).GetComponent<Text>().text = "Open the basement";
+                break;
+            case 4:
+                //mission2endscreenobj.SetActive(true);
+                //nothing :)
+                break;
+            case 5:
+                //mission2endscreenobj.SetActive(true);
+                missionEndMarks[currentMission].SetActive(true);
+                currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
+                GameObject k = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
+                k.transform.SetParent(missionMarkParent.transform, false);
+                k.transform.GetChild(0).GetComponent<Text>().text = "Find the distribution boxes";
                 break;
         }
 
