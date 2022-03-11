@@ -113,6 +113,12 @@ public class PlayerLook : MonoBehaviour
                     key1 = true;
                     raycastInfo.text = "";
                     Destroy(hit.transform.gameObject);
+                    raycastsubInfo.text = "You found the basement key!";
+                    StartCoroutine(delaySubText());
+                    if(mm.currentMission == 2)//mission called: "find the basement key"
+                    {
+                        mm.NextMission();
+                    }
                 }
                 else if (hit.collider.tag == "door" && hit.transform.gameObject.GetComponent<Door>() != null)
                 {

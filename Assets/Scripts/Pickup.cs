@@ -48,7 +48,7 @@ public class Pickup : MonoBehaviour
         }
 
         RaycastHit hit1;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit1, pickuprange))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit1, 3))
         {
             if(hit1.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
@@ -62,7 +62,7 @@ public class Pickup : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickuprange))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 3))
             {
                 PickupObject(hit.transform.gameObject);
             }

@@ -53,6 +53,14 @@ public class MissionManager : MonoBehaviour
                 h.transform.SetParent(missionMarkParent.transform, false);
                 h.transform.GetChild(0).GetComponent<Text>().text = "Find keys to the basement";
                 break;
+            case 3:
+                //mission2endscreenobj.SetActive(true);
+                missionEndMarks[currentMission].SetActive(true);
+                currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
+                GameObject j = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
+                j.transform.SetParent(missionMarkParent.transform, false);
+                j.transform.GetChild(0).GetComponent<Text>().text = "Open the basement";
+                break;
         }
 
     }
