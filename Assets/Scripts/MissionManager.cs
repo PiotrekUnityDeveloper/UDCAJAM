@@ -65,6 +65,7 @@ public class MissionManager : MonoBehaviour
             case 4:
                 //mission2endscreenobj.SetActive(true);
                 //nothing :)
+                missionEndMarks[currentMission].SetActive(true);
                 break;
             case 5:
                 //mission2endscreenobj.SetActive(true);
