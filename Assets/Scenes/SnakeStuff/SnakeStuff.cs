@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SnakeStuff : MonoBehaviour
 {
@@ -108,6 +109,9 @@ public class SnakeStuff : MonoBehaviour
 
     float passedtime, timebetweenmovements;
 
+    public Text scoretxt;
+    public int score;
+
     // Update is called once per frame
     void Update()
     {
@@ -165,6 +169,8 @@ public class SnakeStuff : MonoBehaviour
                 //head.gameObject.GetComponent<Material>().GetMatrix
                 head = newTile;
                 head.GetComponent<SpriteRenderer>().material = headmat;
+                score += 1;
+                scoretxt.text = score.ToString();
                 spawnFood();
             }
             else
@@ -211,8 +217,12 @@ public class SnakeStuff : MonoBehaviour
         block.SetActive(false);
         */
 
+        
+
         if(GameObject.Find("GameManager").GetComponent<SnakeGameLoad>() != null)
         {
+            score = 0;
+            scoretxt.text = "0";
             GameObject.Find("GameManager").GetComponent<SnakeGameLoad>().ReloadGame();
         }
 

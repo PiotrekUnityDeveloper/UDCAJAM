@@ -126,12 +126,14 @@ public class Typewriter : MonoBehaviour
 
     public void SecondMission()
     {
+        CoroutineStopper();
         StartCoroutine(ShowMonologue("Oh $#|+, the basement is locked. Where did i put the keys?", false));
         voiceovers[3].Play(); //fourth
     }
 
     public void ThirdMission()
     {
+        CoroutineStopper();
         StartCoroutine(ShowMonologue("Got em!", false));
         voiceovers[4].Play(); //fifth
     }
