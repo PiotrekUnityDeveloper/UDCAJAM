@@ -9,7 +9,7 @@ public class endredirect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("OpenSnakeInfo", 18);
+        Invoke("OpenSnakeInfo", 17f);
     }
 
     // Update is called once per frame
