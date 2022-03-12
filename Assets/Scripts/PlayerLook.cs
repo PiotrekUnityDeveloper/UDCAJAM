@@ -63,6 +63,7 @@ public class PlayerLook : MonoBehaviour
         jumpscaresound.Play();
         bloodyOverlay.SetActive(true);
         StartCoroutine(Hidebloodyoverlay());
+        BasementAmbient2.Play();
     }
 
     private IEnumerator Hidebloodyoverlay()

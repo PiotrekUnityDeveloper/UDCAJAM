@@ -75,6 +75,14 @@ public class MissionManager : MonoBehaviour
                 k.transform.SetParent(missionMarkParent.transform, false);
                 k.transform.GetChild(0).GetComponent<Text>().text = "Find the distribution boxes";
                 break;
+            case 6:
+                //mission2endscreenobj.SetActive(true);
+                missionEndMarks[currentMission].SetActive(true);
+                currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
+                GameObject l = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
+                l.transform.SetParent(missionMarkParent.transform, false);
+                l.transform.GetChild(0).GetComponent<Text>().text = "Find new fuses";
+                break;
         }
 
     }
