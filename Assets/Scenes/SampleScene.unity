@@ -4773,7 +4773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &403687564
 Transform:
   m_ObjectHideFlags: 0
@@ -5636,7 +5636,7 @@ MonoBehaviour:
     FieldOfView: 88
     OrthographicSize: 5
     NearClipPlane: 0.01
-    FarClipPlane: 36.26
+    FarClipPlane: 31.54
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
@@ -6959,13 +6959,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653260035}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isGlobal: 1
-  priority: 2.59
+  priority: 1
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
@@ -15517,7 +15517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1051009396
 Transform:
   m_ObjectHideFlags: 0
@@ -27576,7 +27576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1767962986
 Light:
   m_ObjectHideFlags: 0
@@ -30495,7 +30495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frwrdRenderer: {fileID: 11400000, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
   postfxObj: {fileID: 653260035}
-  PostfxOn: 1
+  PostfxOn: 0
   canPause: 0
   isPaused: 0
   PauseMenu: {fileID: 1513433300}
@@ -35918,7 +35918,7 @@ LODGroup:
   m_AnimateCrossFading: 1
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.635696
+  - screenRelativeHeight: 0.9126054
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 7561000461381357918}
@@ -35987,7 +35987,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.027506353
+  - screenRelativeHeight: 0.9126054
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3075852626851863752}
