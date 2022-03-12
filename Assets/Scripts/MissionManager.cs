@@ -81,7 +81,7 @@ public class MissionManager : MonoBehaviour
                 currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
                 GameObject k = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
                 k.transform.SetParent(missionMarkParent.transform, false);
-                k.transform.GetChild(0).GetComponent<Text>().text = "Find the distribution boxe";
+                k.transform.GetChild(0).GetComponent<Text>().text = "Find the distribution box";
                 fthmission.Play();
                 break;
             case 6:
