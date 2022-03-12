@@ -9,13 +9,13 @@ public class endredirect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("OpenSnakeInfo", 12);
+        Invoke("OpenSnakeInfo", 18);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.LeftControl))
         {
             SceneManager.LoadScene("Menu");
         }
