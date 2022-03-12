@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class endredirect : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("OpenSnakeInfo", 2);
+        Invoke("OpenSnakeInfo", 12);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 
     [DllImport("__Internal")]
