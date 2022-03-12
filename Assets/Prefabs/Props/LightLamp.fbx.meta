@@ -1,17 +1,9 @@
 fileFormatVersion: 2
-guid: ebfe7ed3888fcce4881267596f5e18aa
+guid: 0fb38553ecc234e459002fbe4a10fc4a
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable:
-  - first:
-      74: 1913113944827449713
-    second: ChesterfieldCouch_LOD1|ChesterfieldCouch_LP.001Action
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: e92ef57050c09fc4cb46d24fcb16ff4a, type: 2}
+  internalIDToNameTable: []
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,9 +33,7 @@ ModelImporter:
     clipAnimations: []
     isReadable: 0
   meshes:
-    lODScreenPercentages:
-    - 0.25
-    - 0.01
+    lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
