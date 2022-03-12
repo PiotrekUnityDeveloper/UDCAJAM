@@ -66,6 +66,7 @@ public class MissionManager : MonoBehaviour
                 //mission2endscreenobj.SetActive(true);
                 //nothing :)
                 missionEndMarks[currentMission].SetActive(true);
+                currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
                 break;
             case 5:
                 //mission2endscreenobj.SetActive(true);
