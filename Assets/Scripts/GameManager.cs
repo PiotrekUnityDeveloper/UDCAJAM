@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
             //enable snake blockviewer and stop snake music here
             snakemusic.Stop();
             snakeblocker.SetActive(true);
+            HouseLights.SetActive(false);
             firstambient.Play();
             shutdownsound.Play();
         }
