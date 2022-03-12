@@ -18,6 +18,7 @@ public class outbasementtrigg : MonoBehaviour
 
     public MissionManager missmanag;
     public Typewriter tpw;
+    public AudioSource fasssstmusic;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
@@ -26,6 +27,7 @@ public class outbasementtrigg : MonoBehaviour
             {
                 missmanag.NextMission();
                 tpw.GotOutOfBasement();
+                fasssstmusic.Stop();
             }
         }
     }

@@ -37,10 +37,12 @@ public class CinemachineCameraToggle : MonoBehaviour
 
     private bool loopdisabler;
 
+    private bool canRetire = true;
+
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < vcam.Length; i++)
+        for (int i = 0; i < vcam.Length; i++) //foreach would fit better :o
         {
             if(i != vcamIndex)
             {
@@ -52,13 +54,14 @@ public class CinemachineCameraToggle : MonoBehaviour
             }
         }
 
-        if(Input.GetKey(KeyCode.Backspace))
+        if(Input.GetKey(KeyCode.Backspace) && canRetire == true)
         {
             vcamIndex = 0;
             pickup.candrag = true;
             look.canlook = true;
             movement.canmove = true;
             crosshairobj.SetActive(true);
+            canRetire = false;
         }
 
         if(PlayerPrefs.GetInt("skip", 0) == 1 && loopdisabler == false)

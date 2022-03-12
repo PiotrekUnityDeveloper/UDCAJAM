@@ -111,6 +111,15 @@ public class MissionManager : MonoBehaviour
                 z.transform.GetChild(0).GetComponent<Text>().text = "GET OUT OF THE BASEMENT";
                 //AfterJumpscareAmbient.Play();
                 break;
+            case 9:
+                //mission2endscreenobj.SetActive(true);
+                missionEndMarks[currentMission].SetActive(true);
+                currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
+                GameObject c = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
+                c.transform.SetParent(missionMarkParent.transform, false);
+                c.transform.GetChild(0).GetComponent<Text>().text = "Go back to ur ultra hd RTX pc";
+                //AfterJumpscareAmbient.Play();
+                break;
         }
 
     }

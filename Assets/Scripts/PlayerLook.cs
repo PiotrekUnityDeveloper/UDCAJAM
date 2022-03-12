@@ -31,7 +31,10 @@ public class PlayerLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        RenderSettings.fog = false;
+        RenderSettings.fog = true;
+        RenderSettings.fogColor = Color.black;
+        RenderSettings.fogStartDistance = 12f;
+        RenderSettings.fogEndDistance = 15f;
         canlook = false;
         StartCoroutine(DelayLook());
     }

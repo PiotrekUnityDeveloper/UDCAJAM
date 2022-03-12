@@ -158,10 +158,10 @@ public class Typewriter : MonoBehaviour
 
     public void BeforeJumpscare()
     {
-        CoroutineStopper();
+        //CoroutineStopper();
         FuseToFind.SetActive(true);
         StartCoroutine(ShowMonologue("Oh no! I dont have a new fuse! There should be one in this basement tho", false));
-        //voiceovers[6].Play(); //future voiceover
+        voiceovers[6].Play(); //future voiceover
         StartCoroutine(AfterJumpscareMonologue());
     }
 
@@ -170,6 +170,7 @@ public class Typewriter : MonoBehaviour
         yield return new WaitForSeconds(5);
         CoroutineStopper();
         StartCoroutine(ShowMonologue("What was that?", false));
+        voiceovers[7].Play(); //future voiceover
     }
 
     public void FoundFuse()
@@ -177,15 +178,21 @@ public class Typewriter : MonoBehaviour
         CoroutineStopper();
         currentMonologue = 5;
         StartCoroutine(ShowMonologue("I have to replace it now!", false));
+        voiceovers[8].Play(); //future voiceover
     }
 
     public GameObject HouseLights;
 
+    public AudioSource fastmusic;
+    public AudioSource MainAmbient01;
     public void ReplacedFuse()
     {
         CoroutineStopper();
         StartCoroutine(ShowMonologue("Okay, lets get the fuck outta here quick", false));
         HouseLights.SetActive(true);
+        voiceovers[9].Play(); //future voiceover
+        fastmusic.Play();
+        MainAmbient01.Stop();
     }
 
     public void BacktoFuseBoxMission()
@@ -203,6 +210,7 @@ public class Typewriter : MonoBehaviour
         CoroutineStopper();
         BasementLocker.SetActive(true);
         StartCoroutine(ShowMonologue("Oh my god that was scary, lets get back to gaming now!", false));
+        voiceovers[10].Play(); //future voiceover
     }
 
     public IEnumerator autoclose()
