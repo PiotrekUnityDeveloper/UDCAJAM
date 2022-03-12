@@ -18,6 +18,11 @@ public class MissionManager : MonoBehaviour
     public GameObject currentMissionArrow;
 
     public GameObject missionMarkParent;
+
+    public AudioSource BasementDoor;
+    public AudioSource Tension;
+    public AudioSource AfterJumpscareAmbient;
+    public AudioSource fthmission;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +70,8 @@ public class MissionManager : MonoBehaviour
             case 4:
                 //mission2endscreenobj.SetActive(true);
                 //nothing :)
+                BasementDoor.Play();
+                Tension.Play();
                 missionEndMarks[currentMission].SetActive(true);
                 currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
                 break;
@@ -74,7 +81,8 @@ public class MissionManager : MonoBehaviour
                 currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
                 GameObject k = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
                 k.transform.SetParent(missionMarkParent.transform, false);
-                k.transform.GetChild(0).GetComponent<Text>().text = "Find the distribution boxes";
+                k.transform.GetChild(0).GetComponent<Text>().text = "Find the distribution boxe";
+                fthmission.Play();
                 break;
             case 6:
                 //mission2endscreenobj.SetActive(true);
@@ -83,6 +91,25 @@ public class MissionManager : MonoBehaviour
                 GameObject l = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
                 l.transform.SetParent(missionMarkParent.transform, false);
                 l.transform.GetChild(0).GetComponent<Text>().text = "Search for a new fuse";
+                AfterJumpscareAmbient.Play();
+                break;
+            case 7:
+                //mission2endscreenobj.SetActive(true);
+                missionEndMarks[currentMission].SetActive(true);
+                currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
+                GameObject x = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
+                x.transform.SetParent(missionMarkParent.transform, false);
+                x.transform.GetChild(0).GetComponent<Text>().text = "Replace the fuse in the box";
+                //AfterJumpscareAmbient.Play();
+                break;
+            case 8:
+                //mission2endscreenobj.SetActive(true);
+                missionEndMarks[currentMission].SetActive(true);
+                currentMissionArrow.transform.position = new Vector2(currentMissionArrow.transform.position.x, missionEndMarks[currentMission].transform.position.y); ;
+                GameObject z = Instantiate(missionMarkPrefab, missionmarkinstantiator.position, Quaternion.identity);
+                z.transform.SetParent(missionMarkParent.transform, false);
+                z.transform.GetChild(0).GetComponent<Text>().text = "GET OUT OF THE BASEMENT";
+                //AfterJumpscareAmbient.Play();
                 break;
         }
 

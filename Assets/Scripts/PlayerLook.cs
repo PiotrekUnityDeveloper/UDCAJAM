@@ -132,6 +132,14 @@ public class PlayerLook : MonoBehaviour
             {
                 raycastInfo.text = "Fuse box thing [E]";
             }
+            else if (checker.collider.tag == "fuse")
+            {
+                raycastInfo.text = "Fuse [E]";
+            }
+            else if (checker.collider.tag == "lockedno1")
+            {
+                raycastInfo.text = "Locked";
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -160,13 +168,36 @@ public class PlayerLook : MonoBehaviour
                 }
                 else if (hit.collider.tag == "fusebox")
                 {
-                    tw.BeforeJumpscare();
+                    
                     if (mm.currentMission == 5)
                     {
+                        tw.BeforeJumpscare();
                         mm.NextMission();
                         StartCoroutine(JumpscarePlayer()); //jumpscare occurs after like 4 seconds or smth i dont remember sry
                     }
 
+                    if (mm.currentMission == 7) //last but not the least mission :D
+                    {
+                        //next mission (after the fuse is picked up)
+                        mm.NextMission();
+                        tw.ReplacedFuse();
+                    }
+
+                }
+                else if (hit.collider.tag == "fuse")
+                {
+                    
+
+                    if(mm.currentMission == 6)
+                    {
+                        //next mission (after the fuse is picked up)
+                        mm.NextMission();
+                        tw.FoundFuse();
+
+                        Destroy(hit.collider.gameObject);
+                    }
+
+                    
                 }
                 else if (hit.collider.tag == "door" && hit.transform.gameObject.GetComponent<Door>() != null)
                 {

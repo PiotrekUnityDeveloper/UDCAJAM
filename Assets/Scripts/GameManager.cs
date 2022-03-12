@@ -43,10 +43,13 @@ public class GameManager : MonoBehaviour
         snakemusic.Play();
     }
 
+    public GameObject HouseLights;
+
     public IEnumerator blocker()
     {
         yield return new WaitForSecondsRealtime(22);
         snakeblocker.SetActive(true);
+        HouseLights.SetActive(false);
         firstambient.Play();
         shutdownsound.Play();
     }

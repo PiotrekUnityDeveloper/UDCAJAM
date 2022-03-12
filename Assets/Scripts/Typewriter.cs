@@ -154,11 +154,55 @@ public class Typewriter : MonoBehaviour
         
     }
 
+    public GameObject FuseToFind;
+
     public void BeforeJumpscare()
     {
         CoroutineStopper();
+        FuseToFind.SetActive(true);
         StartCoroutine(ShowMonologue("Oh no! I dont have a new fuse! There should be one in this basement tho", false));
         //voiceovers[6].Play(); //future voiceover
+        StartCoroutine(AfterJumpscareMonologue());
+    }
+
+    public IEnumerator AfterJumpscareMonologue()
+    {
+        yield return new WaitForSeconds(5);
+        CoroutineStopper();
+        StartCoroutine(ShowMonologue("What was that?", false));
+    }
+
+    public void FoundFuse()
+    {
+        CoroutineStopper();
+        currentMonologue = 5;
+        StartCoroutine(ShowMonologue("I have to replace it now!", false));
+    }
+
+    public GameObject HouseLights;
+
+    public void ReplacedFuse()
+    {
+        CoroutineStopper();
+        StartCoroutine(ShowMonologue("Okay, lets get the fuck outta here quick", false));
+        HouseLights.SetActive(true);
+    }
+
+    public void BacktoFuseBoxMission()
+    {
+        //stuff
+        //CoroutineStopper();
+        //StartCoroutine(ShowMonologue("AH, it finally works!", false));
+        //voiceovers[8].Play(); //future voiceover (seventh voiceover is: "what was that?")
+    }
+
+    public GameObject BasementLocker;
+
+    public void GotOutOfBasement()
+    {
+        CoroutineStopper();
+        BasementLocker.SetActive(true);
+        StartCoroutine(ShowMonologue("Oh my god that was scary, lets get back to gaming now!", false));
     }
 
     public IEnumerator autoclose()
@@ -228,6 +272,12 @@ public class Typewriter : MonoBehaviour
             //USE THIS (IT IS EMPTY RN PLS DONT IGNORE)
             currentMonologue += 1;
         }
+        else if(currentMonologue == 5)
+        {
+            currentMonologue += 1;
+        }
+
+        print("Current Monologue is: " + currentMonologue);
 
     }
 }
