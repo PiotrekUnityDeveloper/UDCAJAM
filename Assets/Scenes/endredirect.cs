@@ -9,7 +9,7 @@ public class endredirect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("OpenSnakeInfo", 17f);
+        Invoke("OpenSnakeInfo", 20f);
     }
 
     // Update is called once per frame
@@ -36,6 +36,7 @@ public class endredirect : MonoBehaviour
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
             openIt("https://www.google.com/search?q=when+snake+game+was+created&oq=when+snake+game+was+created&aqs=chrome.0.69i59j0i22i30.4132j0j7&sourceid=chrome&ie=UTF-8");
+            Application.OpenURL("https://www.google.com/search?q=when+snake+game+was+created&oq=when+snake+game+was+created&aqs=chrome.0.69i59j0i22i30.4132j0j7&sourceid=chrome&ie=UTF-8");
         }
         else
         {
