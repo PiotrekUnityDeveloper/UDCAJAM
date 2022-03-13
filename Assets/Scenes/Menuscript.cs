@@ -24,6 +24,8 @@ public class Menuscript : MonoBehaviour
         
     }
 
+    public GameObject loadingObj;
+
     public void ExitGameonceagain()
     {
         Application.Quit();
@@ -31,6 +33,7 @@ public class Menuscript : MonoBehaviour
 
     public void PlayGame()
     {
+        loadingObj.SetActive(true);
         SceneManager.LoadSceneAsync("SampleScene");
     }
 
