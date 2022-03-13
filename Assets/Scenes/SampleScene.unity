@@ -14696,7 +14696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGlobal: 1
-  priority: 1
+  priority: 6.4
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
@@ -44884,7 +44884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frwrdRenderer: {fileID: 11400000, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
   postfxObj: {fileID: 653260035}
-  PostfxOn: 0
+  PostfxOn: 1
   canPause: 0
   isPaused: 0
   PauseMenu: {fileID: 1513433300}
