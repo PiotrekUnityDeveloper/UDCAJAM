@@ -146,12 +146,14 @@ public class Typewriter : MonoBehaviour
         
     }
 
+    public AudioSource BasementSound;
+
     public void FifthMission()
     {
         CoroutineStopper();
         StartCoroutine(ShowMonologue("Bro why this basement looks like it hasn't been cleaned for I=/_/C|%G twelve centuries?", false));
         voiceovers[5].Play();
-        
+        BasementSound.Play();
     }
 
     public GameObject FuseToFind;
