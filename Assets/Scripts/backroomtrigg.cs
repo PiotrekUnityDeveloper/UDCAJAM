@@ -54,7 +54,7 @@ public class backroomtrigg : MonoBehaviour
         PowerDownSound.Play();
         SNakeBlocker.SetActive(true);
         fastmusicsrc.Stop();
-        yield return new WaitForSecondsRealtime(2.3f);
+        yield return new WaitForSecondsRealtime(3.0f);
         SceneManager.LoadScene("End");
     }
 }
