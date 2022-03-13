@@ -12,11 +12,15 @@ public class Menuscript : MonoBehaviour
     {
         sources1 = GameObject.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         VolUpdate1();
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         
     }
 
